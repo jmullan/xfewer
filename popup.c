@@ -53,273 +53,273 @@ static void popdownBox __P((Widget, XtPointer, XtPointer));
 
 Widget
 DialogBox(top, confFunc, confData, label, btnLabel, selection)
-Widget top;
-XtCallbackProc confFunc;
-XtPointer confData;
-const char *label;
-const char *btnLabel;
-char *selection;
+     Widget top;
+     XtCallbackProc confFunc;
+     XtPointer confData;
+     const char *label;
+     const char *btnLabel;
+     char *selection;
 {
-  static XtActionsRec dbactions[2];
-  static String myreturn = "#override <Key>Return:   set() notify() unset()\n";
-  XtAccelerators accel;
-  static String mytranslations = "#override\n\
+    static XtActionsRec dbactions[2];
+    static String myreturn = "#override <Key>Return:   set() notify() unset()\n";
+    XtAccelerators accel;
+    static String mytranslations = "#override\n\
 	Ctrl<Key>S:  no-op(RingBell)\n\
 	Ctrl<Key>R:  no-op(RingBell)\n";
-  XtTranslations xlate;
-  static int init = 0;
-  Widget popup, form, lbl, input, confirm, cancel;
-  XtCallbackRec callback[2];
+    XtTranslations xlate;
+    static int init = 0;
+    Widget popup, form, lbl, input, confirm, cancel;
+    XtCallbackRec callback[2];
 
-  dbactions[0].string = "Nothing";
-  dbactions[0].proc = (XtActionProc)NULL;
+    dbactions[0].string = "Nothing";
+    dbactions[0].proc = (XtActionProc)NULL;
 
-  if (!init) {
-    XtAddActions(dbactions, XtNumber(dbactions));
-    init = 1;
-  }
+    if (!init) {
+        XtAddActions(dbactions, XtNumber(dbactions));
+        init = 1;
+    }
 
-  callback[1].callback = NULL;
-  callback[1].closure = (XtPointer)NULL;
+    callback[1].callback = NULL;
+    callback[1].closure = (XtPointer)NULL;
 
-  popup = XtVaCreatePopupShell("popup", transientShellWidgetClass, top,
-			       XtNallowShellResize, True,
-			       NULL);
+    popup = XtVaCreatePopupShell("popup", transientShellWidgetClass, top,
+                                 XtNallowShellResize, True,
+                                 NULL);
 
-  form = XtVaCreateManagedWidget("form", formWidgetClass, popup,
-				 NULL);
+    form = XtVaCreateManagedWidget("form", formWidgetClass, popup,
+                                   NULL);
 
-  lbl = XtVaCreateManagedWidget(label, labelWidgetClass, form,
-				XtNborderWidth, 0,
-				XtNfont, labelFont,
-				XtNjustify, XtJustifyLeft,
-				XtNlabel, label,
-				XtNleft, XtChainLeft,
-				XtNright, XtChainLeft,
-				NULL);
+    lbl = XtVaCreateManagedWidget(label, labelWidgetClass, form,
+                                  XtNborderWidth, 0,
+                                  XtNfont, labelFont,
+                                  XtNjustify, XtJustifyLeft,
+                                  XtNlabel, label,
+                                  XtNleft, XtChainLeft,
+                                  XtNright, XtChainLeft,
+                                  NULL);
 
-  xlate = XtParseTranslationTable(mytranslations);
-  input = XtVaCreateManagedWidget("input", asciiTextWidgetClass, form,
-				  XtNeditType, XawtextEdit,
-				  XtNfont, textFont,
-				  XtNfromHoriz, NULL,
-				  XtNfromVert, lbl,
-				  XtNleft, XtChainLeft,
-				  XtNlength, XFEWER_MAX_INPUT,
-				  XtNresizable, True,
-				  XtNright, XtChainRight,
-				  XtNstring, selection,
+    xlate = XtParseTranslationTable(mytranslations);
+    input = XtVaCreateManagedWidget("input", asciiTextWidgetClass, form,
+                                    XtNeditType, XawtextEdit,
+                                    XtNfont, textFont,
+                                    XtNfromHoriz, NULL,
+                                    XtNfromVert, lbl,
+                                    XtNleft, XtChainLeft,
+                                    XtNlength, XFEWER_MAX_INPUT,
+                                    XtNresizable, True,
+                                    XtNright, XtChainRight,
+                                    XtNstring, selection,
 #ifdef X11R4
-				  XtNtextOptions, resizeWidth,
+                                    XtNtextOptions, resizeWidth,
 #endif
-				  XtNtranslations, xlate,
-				  XtNuseStringInPlace, True,
-				  XtNvertDistance, 0,
-				  XtNwidth, XFEWER_INPUT_WIDTH,
-				  NULL);
+                                    XtNtranslations, xlate,
+                                    XtNuseStringInPlace, True,
+                                    XtNvertDistance, 0,
+                                    XtNwidth, XFEWER_INPUT_WIDTH,
+                                    NULL);
 
-  XtSetKeyboardFocus(form, input);
+    XtSetKeyboardFocus(form, input);
 
-  accel = XtParseAcceleratorTable(myreturn);
-  callback[0].callback = confFunc;
-  callback[0].closure = confData;
-  confirm = XtVaCreateManagedWidget(btnLabel, commandWidgetClass, form,
-				    XtNaccelerators, accel,
-				    XtNcallback, callback,
-				    XtNcursor, dialogcur,
-				    XtNfont, buttonFont,
-				    XtNfromVert, input,
-				    XtNfromHoriz, NULL,
-				    XtNleft, XtChainLeft,
-				    XtNright, XtChainLeft,
-				    XtNvertDistance, 5,
-				    XtNwidth, XFEWER_BUTTON_WIDTH,
-				    NULL);
+    accel = XtParseAcceleratorTable(myreturn);
+    callback[0].callback = confFunc;
+    callback[0].closure = confData;
+    confirm = XtVaCreateManagedWidget(btnLabel, commandWidgetClass, form,
+                                      XtNaccelerators, accel,
+                                      XtNcallback, callback,
+                                      XtNcursor, dialogcur,
+                                      XtNfont, buttonFont,
+                                      XtNfromVert, input,
+                                      XtNfromHoriz, NULL,
+                                      XtNleft, XtChainLeft,
+                                      XtNright, XtChainLeft,
+                                      XtNvertDistance, 5,
+                                      XtNwidth, XFEWER_BUTTON_WIDTH,
+                                      NULL);
 
-  callback[0].callback = Cancel;
-  callback[0].closure = (XtPointer)popup;
-  cancel = XtVaCreateManagedWidget("Cancel", commandWidgetClass, form,
-				   XtNcallback, callback,
-				   XtNcursor, dialogcur,
-				   XtNfont, buttonFont,
-				   XtNfromVert, input,
-				   XtNfromHoriz, confirm,
-				   XtNhorizDistance, 2,
-				   XtNleft, XtChainRight,
-				   XtNright, XtChainRight,
-				   XtNvertDistance, 5,
-				   XtNwidth, XFEWER_BUTTON_WIDTH,
-				   NULL);
+    callback[0].callback = Cancel;
+    callback[0].closure = (XtPointer)popup;
+    cancel = XtVaCreateManagedWidget("Cancel", commandWidgetClass, form,
+                                     XtNcallback, callback,
+                                     XtNcursor, dialogcur,
+                                     XtNfont, buttonFont,
+                                     XtNfromVert, input,
+                                     XtNfromHoriz, confirm,
+                                     XtNhorizDistance, 2,
+                                     XtNleft, XtChainRight,
+                                     XtNright, XtChainRight,
+                                     XtNvertDistance, 5,
+                                     XtNwidth, XFEWER_BUTTON_WIDTH,
+                                     NULL);
 
-  XtInstallAccelerators(input, confirm);
+    XtInstallAccelerators(input, confirm);
 
-  return(popup);
+    return(popup);
 }
 
 static void
 toggleSearchType(widget, closure, callData)
-Widget widget;
-XtPointer closure;
-XtPointer callData;
+     Widget widget;
+     XtPointer closure;
+     XtPointer callData;
 {
-  WindowInfo *wi = (WindowInfo *)closure;
-  int searchType = wi->flag & SEARCH_BITS;
+    WindowInfo *wi = (WindowInfo *)closure;
+    int searchType = wi->flag & SEARCH_BITS;
 
-  if (!searchType)
-    wi->flag |= XFewerSearchInsensitive;
-  else if (searchType && ((searchType & XFewerSearchInsensitive) == searchType))
-    wi->flag = (wi->flag & ~SEARCH_BITS) | XFewerSearchRegExpr;
-  else if (searchType && ((searchType & XFewerSearchRegExpr) == searchType))
-    wi->flag &= ~SEARCH_BITS;
-  else
-    wi->flag = (wi->flag & ~SEARCH_BITS) | XFewerSearchInsensitive;
+    if (!searchType)
+        wi->flag |= XFewerSearchInsensitive;
+    else if (searchType && ((searchType & XFewerSearchInsensitive) == searchType))
+        wi->flag = (wi->flag & ~SEARCH_BITS) | XFewerSearchRegExpr;
+    else if (searchType && ((searchType & XFewerSearchRegExpr) == searchType))
+        wi->flag &= ~SEARCH_BITS;
+    else
+        wi->flag = (wi->flag & ~SEARCH_BITS) | XFewerSearchInsensitive;
 
-  XtVaSetValues(widget,
+    XtVaSetValues(widget,
 		  XtNlabel, (wi->flag & XFewerSearchInsensitive ?
 			     " Case Insensitive " :
 			     (wi->flag & XFewerSearchRegExpr ?
-			     "Regular Expression" :
-			     "   Exact Match    ")),
+                              "Regular Expression" :
+                              "   Exact Match    ")),
 		  NULL);
 }
 
 Widget
 SearchBox(top, srchFunc, wi, label, btnLabel, selection)
-Widget top;
-XtCallbackProc srchFunc;
-WindowInfo *wi;
-const char *label;
-const char *btnLabel;
-char *selection;
+     Widget top;
+     XtCallbackProc srchFunc;
+     WindowInfo *wi;
+     const char *label;
+     const char *btnLabel;
+     char *selection;
 {
-  static XtActionsRec dbactions[2];
-  static String myreturn = "#override <Key>Return:   set() notify() unset()\n";
-  XtAccelerators accel;
-  static String mytranslations = "#override\n\
+    static XtActionsRec dbactions[2];
+    static String myreturn = "#override <Key>Return:   set() notify() unset()\n";
+    XtAccelerators accel;
+    static String mytranslations = "#override\n\
 	Ctrl<Key>S:  no-op(RingBell)\n\
 	Ctrl<Key>R:  no-op(RingBell)\n";
-  XtTranslations xlate;
-  static int init = 0;
-  Widget popup, form, lbl, input, searchType, search, cancel;
-  const char *searchLabel;
-  XtCallbackRec callback[2];
+    XtTranslations xlate;
+    static int init = 0;
+    Widget popup, form, lbl, input, searchType, search, cancel;
+    const char *searchLabel;
+    XtCallbackRec callback[2];
 
-  dbactions[0].string = "Nothing";
-  dbactions[0].proc = (XtActionProc)NULL;
+    dbactions[0].string = "Nothing";
+    dbactions[0].proc = (XtActionProc)NULL;
 
-  if (!init) {
-    XtAddActions(dbactions, XtNumber(dbactions));
-    init = 1;
-  }
+    if (!init) {
+        XtAddActions(dbactions, XtNumber(dbactions));
+        init = 1;
+    }
 
-  callback[1].callback = NULL;
-  callback[1].closure = (XtPointer)NULL;
+    callback[1].callback = NULL;
+    callback[1].closure = (XtPointer)NULL;
 
-  popup = XtVaCreatePopupShell("popup", transientShellWidgetClass, top,
-			       XtNallowShellResize, True,
-			       NULL);
+    popup = XtVaCreatePopupShell("popup", transientShellWidgetClass, top,
+                                 XtNallowShellResize, True,
+                                 NULL);
 
-  form = XtVaCreateManagedWidget("form", formWidgetClass, popup,
-				 NULL);
+    form = XtVaCreateManagedWidget("form", formWidgetClass, popup,
+                                   NULL);
 
-  lbl = XtVaCreateManagedWidget(label, labelWidgetClass, form,
-				XtNborderWidth, 0,
-				XtNfont, labelFont,
-				XtNjustify, XtJustifyLeft,
-				XtNlabel, label,
-				XtNleft, XtChainLeft,
-				XtNright, XtChainLeft,
-				NULL);
+    lbl = XtVaCreateManagedWidget(label, labelWidgetClass, form,
+                                  XtNborderWidth, 0,
+                                  XtNfont, labelFont,
+                                  XtNjustify, XtJustifyLeft,
+                                  XtNlabel, label,
+                                  XtNleft, XtChainLeft,
+                                  XtNright, XtChainLeft,
+                                  NULL);
 
-  xlate = XtParseTranslationTable(mytranslations);
-  input = XtVaCreateManagedWidget("input", asciiTextWidgetClass, form,
-				  XtNeditType, XawtextEdit,
-				  XtNfont, textFont,
-				  XtNfromHoriz, NULL,
-				  XtNfromVert, lbl,
-				  XtNleft, XtChainLeft,
-				  XtNlength, XFEWER_MAX_INPUT,
-				  XtNresizable, True,
-				  XtNright, XtChainRight,
-				  XtNstring, selection,
+    xlate = XtParseTranslationTable(mytranslations);
+    input = XtVaCreateManagedWidget("input", asciiTextWidgetClass, form,
+                                    XtNeditType, XawtextEdit,
+                                    XtNfont, textFont,
+                                    XtNfromHoriz, NULL,
+                                    XtNfromVert, lbl,
+                                    XtNleft, XtChainLeft,
+                                    XtNlength, XFEWER_MAX_INPUT,
+                                    XtNresizable, True,
+                                    XtNright, XtChainRight,
+                                    XtNstring, selection,
 #ifdef X11R4
-				  XtNtextOptions, resizeWidth,
+                                    XtNtextOptions, resizeWidth,
 #endif
-				  XtNtranslations, xlate,
-				  XtNuseStringInPlace, True,
-				  XtNvertDistance, 0,
-				  XtNwidth, XFEWER_INPUT_WIDTH,
-				  NULL);
+                                    XtNtranslations, xlate,
+                                    XtNuseStringInPlace, True,
+                                    XtNvertDistance, 0,
+                                    XtNwidth, XFEWER_INPUT_WIDTH,
+                                    NULL);
 
-  XtSetKeyboardFocus(form, input);
+    XtSetKeyboardFocus(form, input);
 
-  wi->flag &= ~SEARCH_BITS;
-  if (resources.defaultSearchType == XFewerSearchInsensitive) {
-    searchLabel = "      Case Insensitive     ";
-    wi->flag |= XFewerSearchInsensitive;
-  } else if (resources.defaultSearchType == XFewerSearchRegExpr) {
-    searchLabel = "     Regular Expression    ";
-    wi->flag |= XFewerSearchRegExpr;
-  } else {
-    searchLabel = "        Exact Match        ";
-  }
+    wi->flag &= ~SEARCH_BITS;
+    if (resources.defaultSearchType == XFewerSearchInsensitive) {
+        searchLabel = "      Case Insensitive     ";
+        wi->flag |= XFewerSearchInsensitive;
+    } else if (resources.defaultSearchType == XFewerSearchRegExpr) {
+        searchLabel = "     Regular Expression    ";
+        wi->flag |= XFewerSearchRegExpr;
+    } else {
+        searchLabel = "        Exact Match        ";
+    }
 
-  callback[0].callback = toggleSearchType;
-  callback[0].closure = (XtPointer )wi;
-  searchType = XtVaCreateManagedWidget("searchType", commandWidgetClass, form,
-				       XtNcallback, callback,
-				       XtNfont, buttonFont,
-				       XtNfromVert, input,
-				       XtNfromHoriz, NULL,
-				       XtNlabel, searchLabel,
-				       XtNleft, XtChainLeft,
-				       XtNright, XtChainRight,
-				       NULL);
+    callback[0].callback = toggleSearchType;
+    callback[0].closure = (XtPointer )wi;
+    searchType = XtVaCreateManagedWidget("searchType", commandWidgetClass, form,
+                                         XtNcallback, callback,
+                                         XtNfont, buttonFont,
+                                         XtNfromVert, input,
+                                         XtNfromHoriz, NULL,
+                                         XtNlabel, searchLabel,
+                                         XtNleft, XtChainLeft,
+                                         XtNright, XtChainRight,
+                                         NULL);
 
-  accel = XtParseAcceleratorTable(myreturn);
+    accel = XtParseAcceleratorTable(myreturn);
 
-  callback[0].callback = srchFunc;
-  callback[0].closure = (XtPointer )wi;
-  search = XtVaCreateManagedWidget(btnLabel, commandWidgetClass, form,
-				   XtNaccelerators, accel,
-				   XtNcallback, callback,
-				   XtNcursor, dialogcur,
-				   XtNfont, buttonFont,
-				   XtNfromVert, searchType,
-				   XtNfromHoriz, NULL,
-				   XtNleft, XtChainLeft,
-				   XtNright, XtChainLeft,
-				   XtNvertDistance, 5,
-				   XtNwidth, XFEWER_BUTTON_WIDTH,
-				   NULL);
+    callback[0].callback = srchFunc;
+    callback[0].closure = (XtPointer )wi;
+    search = XtVaCreateManagedWidget(btnLabel, commandWidgetClass, form,
+                                     XtNaccelerators, accel,
+                                     XtNcallback, callback,
+                                     XtNcursor, dialogcur,
+                                     XtNfont, buttonFont,
+                                     XtNfromVert, searchType,
+                                     XtNfromHoriz, NULL,
+                                     XtNleft, XtChainLeft,
+                                     XtNright, XtChainLeft,
+                                     XtNvertDistance, 5,
+                                     XtNwidth, XFEWER_BUTTON_WIDTH,
+                                     NULL);
 
-  callback[0].callback = Cancel;
-  callback[0].closure = (XtPointer)popup;
-  cancel = XtVaCreateManagedWidget("Cancel", commandWidgetClass, form,
-				   XtNcallback, callback,
-				   XtNcursor, dialogcur,
-				   XtNfont, buttonFont,
-				   XtNfromVert, searchType,
-				   XtNfromHoriz, search,
-				   XtNhorizDistance, 2,
-				   XtNleft, XtChainRight,
-				   XtNright, XtChainRight,
-				   XtNvertDistance, 5,
-				   XtNwidth, XFEWER_BUTTON_WIDTH,
-				   NULL);
+    callback[0].callback = Cancel;
+    callback[0].closure = (XtPointer)popup;
+    cancel = XtVaCreateManagedWidget("Cancel", commandWidgetClass, form,
+                                     XtNcallback, callback,
+                                     XtNcursor, dialogcur,
+                                     XtNfont, buttonFont,
+                                     XtNfromVert, searchType,
+                                     XtNfromHoriz, search,
+                                     XtNhorizDistance, 2,
+                                     XtNleft, XtChainRight,
+                                     XtNright, XtChainRight,
+                                     XtNvertDistance, 5,
+                                     XtNwidth, XFEWER_BUTTON_WIDTH,
+                                     NULL);
 
-  XtInstallAccelerators(input, search);
+    XtInstallAccelerators(input, search);
 
-  return(popup);
+    return(popup);
 }
 
 static void
 popdownBox(widget, closure, callData)
-Widget widget;
-XtPointer closure;
-XtPointer callData;
+     Widget widget;
+     XtPointer closure;
+     XtPointer callData;
 {
-  XtPopdown((Widget)closure);
+    XtPopdown((Widget)closure);
 }
 
 /*
@@ -336,76 +336,76 @@ Widget
 #if defined(USE_PROTOTYPES) || defined(__STDC__)
 MessageBox(Widget top, const char *msg, ...)
 #else
-MessageBox(top, msg, va_alist)
-Widget top;
-const char *msg;
-va_dcl
+    MessageBox(top, msg, va_alist)
+     Widget top;
+     const char *msg;
+     va_dcl
 #endif
 {
-  Widget msgPop, form, msgLabel, button;
-  XtCallbackRec callback[2];
-  static String myreturn = "#override <Key>Return: set() notify() unset()\n";
-  XtAccelerators accel;
-  const char *btntext;
-  XtCallbackProc btnproc;
-  va_list vap;
+    Widget msgPop, form, msgLabel, button;
+    XtCallbackRec callback[2];
+    static String myreturn = "#override <Key>Return: set() notify() unset()\n";
+    XtAccelerators accel;
+    const char *btntext;
+    XtCallbackProc btnproc;
+    va_list vap;
 
-  /* can't popup a messagebox if widgets haven't been realized yet... */
-  if (!XtIsRealized(top)) {
-    XtAppWarning(context, msg);
-    return 0;
-  }
+    /* can't popup a messagebox if widgets haven't been realized yet... */
+    if (!XtIsRealized(top)) {
+        XtAppWarning(context, msg);
+        return 0;
+    }
 
-  callback[1].callback = (XtCallbackProc) NULL;
-  callback[1].closure = (XtPointer) NULL;
+    callback[1].callback = (XtCallbackProc) NULL;
+    callback[1].closure = (XtPointer) NULL;
 
-  msgPop = XtVaCreatePopupShell("msgPop", transientShellWidgetClass, top,
-				XtNallowShellResize, True,
-				NULL);
+    msgPop = XtVaCreatePopupShell("msgPop", transientShellWidgetClass, top,
+                                  XtNallowShellResize, True,
+                                  NULL);
 
-  form = XtVaCreateManagedWidget("form", formWidgetClass, msgPop,
-				 XtNallowShellResize, True,
-				 NULL);
+    form = XtVaCreateManagedWidget("form", formWidgetClass, msgPop,
+                                   XtNallowShellResize, True,
+                                   NULL);
 
-  msgLabel = XtVaCreateManagedWidget("message", labelWidgetClass, form,
-				     XtNallowShellResize, True,
-				     XtNborderWidth, 0,
-				     XtNfont, labelFont,
-				     XtNjustify, XtJustifyLeft,
-				     XtNlabel, msg,
-				     NULL);
+    msgLabel = XtVaCreateManagedWidget("message", labelWidgetClass, form,
+                                       XtNallowShellResize, True,
+                                       XtNborderWidth, 0,
+                                       XtNfont, labelFont,
+                                       XtNjustify, XtJustifyLeft,
+                                       XtNlabel, msg,
+                                       NULL);
 
-  Va_start(vap, msg);
-  btntext = (const char *)va_arg(vap, const char *);
-
-  accel = XtParseAcceleratorTable(myreturn);
-
-  button = 0;
-  while (btntext) {
-    btnproc = (XtCallbackProc )va_arg(vap, XtCallbackProc);
-
-    if (btnproc)
-      callback[0].callback = btnproc;
-    else
-      callback[0].callback = popdownBox;
-    callback[0].closure = (XtPointer)msgPop;
-    button = XtVaCreateManagedWidget(btntext, commandWidgetClass, form,
-				     XtNaccelerators, accel,
-				     XtNcallback, callback,
-				     XtNcursor, dialogcur,
-				     XtNfont, buttonFont,
-				     XtNfromVert, msgLabel,
-				     XtNfromHoriz, button,
-				     XtNleft, XtChainRight,
-				     XtNright, XtChainRight,
-				     XtNvertDistance, 1,
-				     XtNwidth, XFEWER_BUTTON_WIDTH,
-				     NULL);
-
-    XtInstallAccelerators(form, button);
-
+    Va_start(vap, msg);
     btntext = (const char *)va_arg(vap, const char *);
-  }
 
-  return(msgPop);
+    accel = XtParseAcceleratorTable(myreturn);
+
+    button = 0;
+    while (btntext) {
+        btnproc = (XtCallbackProc )va_arg(vap, XtCallbackProc);
+
+        if (btnproc)
+            callback[0].callback = btnproc;
+        else
+            callback[0].callback = popdownBox;
+        callback[0].closure = (XtPointer)msgPop;
+        button = XtVaCreateManagedWidget(btntext, commandWidgetClass, form,
+                                         XtNaccelerators, accel,
+                                         XtNcallback, callback,
+                                         XtNcursor, dialogcur,
+                                         XtNfont, buttonFont,
+                                         XtNfromVert, msgLabel,
+                                         XtNfromHoriz, button,
+                                         XtNleft, XtChainRight,
+                                         XtNright, XtChainRight,
+                                         XtNvertDistance, 1,
+                                         XtNwidth, XFEWER_BUTTON_WIDTH,
+                                         NULL);
+
+        XtInstallAccelerators(form, button);
+
+        btntext = (const char *)va_arg(vap, const char *);
+    }
+
+    return(msgPop);
 }

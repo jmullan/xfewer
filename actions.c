@@ -33,36 +33,36 @@ static void QuitAction __P((Widget, XButtonEvent *, String *, Cardinal *));
 static void HelpAction __P((Widget, XButtonEvent *, String *, Cardinal *));
 
 XtActionsRec actions[] = {
-  { "quit",		(XtActionProc )QuitAction },
-/* { "search",		(XtActionProc )SearchAction }, */
-/* { "search_next",		(XtActionProc )SearchNextAction }, */
-/* { "editor",		(XtActionProc )EditorAction }, */
-/* { "reload",		(XtActionProc )ReloadAction }, */
-/* { "change_file",		(XtActionProc )ChangeFileAction }, */
-/* { "new_window",		(XtActionProc )NewWindowAction }, */
-  { "help",		(XtActionProc )HelpAction },
+    { "quit",		(XtActionProc )QuitAction },
+    /* { "search",		(XtActionProc )SearchAction }, */
+    /* { "search_next",		(XtActionProc )SearchNextAction }, */
+    /* { "editor",		(XtActionProc )EditorAction }, */
+    /* { "reload",		(XtActionProc )ReloadAction }, */
+    /* { "change_file",		(XtActionProc )ChangeFileAction }, */
+    /* { "new_window",		(XtActionProc )NewWindowAction }, */
+    { "help",		(XtActionProc )HelpAction },
 };
 Cardinal numactions = XtNumber(actions);
 
 static void
 QuitAction(w, e, p, n)
-Widget w;
-XButtonEvent *e;
-String *p;
-Cardinal *n;
+     Widget w;
+     XButtonEvent *e;
+     String *p;
+     Cardinal *n;
 {
-  QuitFunction();
+    QuitFunction();
 }
 
 static void
 HelpAction(w, e, p, n)
-Widget w;
-XButtonEvent *e;
-String *p;
-Cardinal *n;
+     Widget w;
+     XButtonEvent *e;
+     String *p;
+     Cardinal *n;
 {
-  WindowInfo *wi;
+    WindowInfo *wi;
 
-  wi = findWindowInfo(w);
-  PopupHelp(w, (XtPointer )wi, NULL);
+    wi = findWindowInfo(w);
+    PopupHelp(w, (XtPointer )wi, NULL);
 }

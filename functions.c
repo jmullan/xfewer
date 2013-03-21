@@ -35,44 +35,44 @@ static int QuitAllPrompt __P((void));
 
 static void
 okQuitAll(widget, closure, callData)
-Widget widget;
-XtPointer closure;
-XtPointer callData;
+     Widget widget;
+     XtPointer closure;
+     XtPointer callData;
 {
-  XtPopdown((Widget)closure);
-  XtDestroyWidget((Widget)closure);
-  DestroyAllWindows();
-  exit(0);
+    XtPopdown((Widget)closure);
+    XtDestroyWidget((Widget)closure);
+    DestroyAllWindows();
+    exit(0);
 }
 
 static void
 cancelQuitAll(widget, closure, callData)
-Widget widget;
-XtPointer closure;
-XtPointer callData;
+     Widget widget;
+     XtPointer closure;
+     XtPointer callData;
 {
-  XtPopdown((Widget)closure);
+    XtPopdown((Widget)closure);
 }
 
 static int
 QuitAllPrompt()
 {
-  Widget base;
-  static Widget quitall = 0;
+    Widget base;
+    static Widget quitall = 0;
 
-  /* make sure there's at least one window */
-  if (!windowlist)
-    return(1);
+    /* make sure there's at least one window */
+    if (!windowlist)
+        return(1);
 
-  /* grab first base widget */
-  base = windowlist->base;
+    /* grab first base widget */
+    base = windowlist->base;
 
-  /* popup warning box */
-  if (!quitall)
-    quitall = MessageBox(base, "Quit ALL windows?",
-		       "Cancel", cancelQuitAll, "OK", okQuitAll, 0);
-  SetPopup(base, quitall);
-  return(0);
+    /* popup warning box */
+    if (!quitall)
+        quitall = MessageBox(base, "Quit ALL windows?",
+                             "Cancel", cancelQuitAll, "OK", okQuitAll, 0);
+    SetPopup(base, quitall);
+    return(0);
 }
 
 /*
@@ -81,8 +81,8 @@ QuitAllPrompt()
 void
 QuitFunction()
 {
-  if ((windowcount == 1) || QuitAllPrompt()) {
-    DestroyAllWindows();
-    exit(0);
-  }
+    if ((windowcount == 1) || QuitAllPrompt()) {
+        DestroyAllWindows();
+        exit(0);
+    }
 }
