@@ -20,7 +20,7 @@
  *
  * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/window.c,v 1.24 1994/07/29 02:34:16 dglo Exp $
  */
-
+#include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
 

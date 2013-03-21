@@ -20,7 +20,7 @@
  *
  * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/main.c,v 1.36 1994/07/29 02:55:50 dglo Exp $
  */
-
+#include <stdlib.h>
 #include <stdio.h>
 
 #include <X11/X.h>
@@ -216,11 +216,11 @@ main(argc, argv)
 #endif
 
     /* save program name */
-    if ((progname = strrchr(argv[0], '/')))
+    if ((progname = strrchr(argv[0], '/'))) {
         progname++;
-    else
+    } else {
         progname = argv[0];
-
+    }
     toplevel = XtVaAppInitialize(&context, XFEWER_CLASS,
                                  options, XtNumber(options),
                                  &argc, argv,

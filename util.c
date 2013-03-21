@@ -21,7 +21,7 @@
  * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/util.c,v 1.22 1994/06/16 22:33:46 dglo Exp $
  */
 
-
+#include <stdlib.h>
 #include <stdio.h>
 
 #include <X11/X.h>

@@ -20,7 +20,7 @@
  *
  * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.5/RCS/functions.c,v 1.11 1994/06/02 20:45:12 dglo Exp $
  */
-
+#include <stdlib.h>
 #include <stdio.h>
 
 #include <X11/X.h>

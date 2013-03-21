@@ -20,7 +20,7 @@
  *
  * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/callbacks.c,v 1.37 1994/07/29 02:28:14 dglo Exp $
  */
-
+#include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <fcntl.h>
@@ -126,7 +126,10 @@ CallEditor(widget, closure, callData)
     strcat(cmd, " ");
     strcat(cmd, wi->file);
     strcat(cmd, "&");
-    system(cmd);
+    int ret = system(cmd);
+    if (-1 == ret) {
+        fprintf(stderr, "Failed to execute %s", cmd);
+    }
     XtFree(cmd);
 }
 
@@ -520,7 +523,10 @@ Print(widget, closure, callData)
     strcpy(cmd, resources.printCmd);
     strcat(cmd, " ");
     strcat(cmd, printfile);
-    system(cmd);
+    int ret = system(cmd);
+    if (-1 == ret) {
+        fprintf(stderr, "Failed to execute %s", cmd);
+    }
     XtFree(cmd);
 
     /* unlink the file if we created it */
