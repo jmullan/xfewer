@@ -1,10 +1,10 @@
-This is the Debian prepackaged version of the xless program.
-xless is Copyright (C) 1994 by Dave Glowacki.
+This is the Debian prepackaged version of the xfewer program.
+xfewer is Copyright (C) 1994 by Dave Glowacki.
 
 This package was put together by Jim Robinson <jimr@simons-rock.edu>,
 from source obtained from:
 
-	ftp://ftp.x.org/contrib/applications/xless-1.7.tar.gz
+	ftp://ftp.x.org/contrib/applications/xfewer-1.7.tar.gz
 
 For some time, it was maintained by:
 	Randolph Chung <tausq@debian.org>.
@@ -14,12 +14,12 @@ Now it is maintained by:
 
 offix Drag and Drop patch obtained from 
 
-http://www.inf.ufrgs.br/~ahentz/OffiX/tools/xless-1.7.patch.gz
+http://www.inf.ufrgs.br/~ahentz/OffiX/tools/xfewer-1.7.patch.gz
 
 * Note: The Debian version does not use the included regexp library anymore, 
   instead, we rely on the regexp stuff in glibc
 
-From the xless README:
+From the xfewer README:
 
 The regular expression library in the 'regexp' subdirectory was written
 by Henry Spencer and is Copyright (c) 1986 by University of Toronto

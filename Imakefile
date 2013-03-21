@@ -5,7 +5,7 @@
  *	-DPRINTCMD=\"/usr/ucb/lpr\"	- path to send file to printer
  *	-DTILDE_EXPANSION		- perform ~ expansion on filenames
  */
-        DEFINES = -DHELPFILE=\"${LIBDIR}/xless.help\" -DTILDE_EXPANSION
+        DEFINES = -DHELPFILE=\"${LIBDIR}/xfewer.help\" -DTILDE_EXPANSION
 
 
            SRCS = help.c init.c popup.c util.c callbacks.c window.c main.c \
@@ -25,14 +25,14 @@ LOCAL_LIBRARIES = -Lregexp -lregexp XawClientLibs
 #endif
 
 MakeSubdirs($(SUBDIRS))
-ComplexProgramTarget(xless)
+ComplexProgramTarget(xfewer)
 
-InstallNonExec(xless.help, $(LIBDIR))
-InstallAppDefaults(XLess)
+InstallNonExec(xfewer.help, $(LIBDIR))
+InstallAppDefaults(XFewer)
 
 #if ProjectX >= 5
 /*
  * Only users of X11R5 (and beyond) can automatically use the color defaults
  */
-InstallAppDefaultsLong(XLess-co,XLess-color)
+InstallAppDefaultsLong(XFewer-co,XFewer-color)
 #endif

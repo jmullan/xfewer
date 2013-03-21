@@ -18,7 +18,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * $Header: /usr/sww/share/src/X11R6/local/applications/xless-1.7/RCS/callbacks.c,v 1.37 1994/07/29 02:28:14 dglo Exp $
+ * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/callbacks.c,v 1.37 1994/07/29 02:28:14 dglo Exp $
  */
 
 #include <stdio.h>
@@ -39,7 +39,7 @@
 #else
 #include "regexp/regexp.h"
 #endif
-#include "xless.h"
+#include "xfewer.h"
 
 extern char *getenv __P((const char *));
 extern int system __P((const char *));
@@ -200,11 +200,11 @@ XawTextPosition offset;
   int rtnval;
 
   /* is this a case-insensitive search? */
-  insensitive = (wi->flag & XLessSearchInsensitive) == XLessSearchInsensitive;
+  insensitive = (wi->flag & XFewerSearchInsensitive) == XFewerSearchInsensitive;
   allocated = 0;
 
   /* if we need to escape special characters... */
-  if ((wi->flag & XLessSearchRegExpr) != XLessSearchRegExpr) {
+  if ((wi->flag & XFewerSearchRegExpr) != XFewerSearchRegExpr) {
 
     /* count the special characters */
     nSpecial = nAlpha = 0;
@@ -342,7 +342,7 @@ XtPointer callData;
   WindowInfo *wi = (WindowInfo *)closure;
 
   if (!wi->searchBuf) {
-    wi->searchBuf = (char *)XtMalloc(XLESS_MAX_INPUT);
+    wi->searchBuf = (char *)XtMalloc(XFEWER_MAX_INPUT);
     wi->searchBuf[0] = 0;
   }
 
@@ -363,7 +363,7 @@ XtPointer callData;
   WindowInfo *wi = (WindowInfo *)closure;
   int fd;
   const char *filename;
-  XLessFlag flag = XLessClearFlag;
+  XFewerFlag flag = XFewerClearFlag;
 
   XtPopdown((Widget)wi->changeFilePopup);
 
@@ -377,7 +377,7 @@ XtPointer callData;
     if (filename && *filename == '~') {
       filename = TildeExpand(filename);
       if (*filename != '~')
-	flag |= XLessFreeFilename;
+	flag |= XFewerFreeFilename;
     }
 #endif /* TILDE_EXPANSION */
 
@@ -389,9 +389,9 @@ XtPointer callData;
     /* read in new file */
     XtFree((char *)wi->memory);
     InitData(fd, wi);
-    if (wi->flag & XLessFreeFilename) {
+    if (wi->flag & XFewerFreeFilename) {
       XtFree((char *)wi->file);
-      wi->flag &= ~XLessFreeFilename;
+      wi->flag &= ~XFewerFreeFilename;
     }
     getReadOnlySource(wi->text, wi->memory);
     wi->file = filename;
@@ -421,7 +421,7 @@ XtPointer callData;
   WindowInfo *wi = (WindowInfo *)closure;
 
   if (!wi->changeFileBuf) {
-    wi->changeFileBuf = (char *)XtMalloc(XLESS_MAX_INPUT);
+    wi->changeFileBuf = (char *)XtMalloc(XFEWER_MAX_INPUT);
     wi->changeFileBuf[0] = 0;
   }
 
@@ -454,7 +454,7 @@ XtPointer callData;
   WindowInfo *wi = (WindowInfo *)closure;
 
   if (!wi->newWindowBuf) {
-    wi->newWindowBuf = (char *)XtMalloc(XLESS_MAX_INPUT);
+    wi->newWindowBuf = (char *)XtMalloc(XFEWER_MAX_INPUT);
     wi->newWindowBuf[0] = 0;
   }
 

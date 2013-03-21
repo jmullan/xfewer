@@ -18,7 +18,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * $Header: /usr/sww/share/src/X11R6/local/applications/xless-1.5/RCS/actions.c,v 1.6 1994/06/02 20:45:12 dglo Exp $
+ * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.5/RCS/actions.c,v 1.6 1994/06/02 20:45:12 dglo Exp $
  */
 
 #include <stdio.h>
@@ -27,7 +27,7 @@
 
 #include <X11/Intrinsic.h>
 
-#include "xless.h"
+#include "xfewer.h"
 
 static void QuitAction __P((Widget, XButtonEvent *, String *, Cardinal *));
 static void HelpAction __P((Widget, XButtonEvent *, String *, Cardinal *));

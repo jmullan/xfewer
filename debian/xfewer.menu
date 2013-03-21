@@ -1,0 +1,2 @@
+?package(xfewer):needs="X11" section="Applications/Viewers" \
+  title="XFewer" command="xfewer /usr/share/doc/xfewer/xfewer.help"

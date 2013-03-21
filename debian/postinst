@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ "$1" = "configure" ]; then
-        if [ -d /usr/doc -a -h /usr/doc/xless -a -d /usr/share/doc/xless ]; then
-                rm -f /usr/doc/xless
+        if [ -d /usr/doc -a -h /usr/doc/xfewer -a -d /usr/share/doc/xfewer ]; then
+                rm -f /usr/doc/xfewer
         fi
 fi
 

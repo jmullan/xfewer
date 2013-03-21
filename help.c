@@ -18,7 +18,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * $Header: /usr/sww/share/src/X11R6/local/applications/xless-1.7/RCS/help.c,v 1.23 1994/07/29 02:27:40 dglo Exp $
+ * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/help.c,v 1.23 1994/07/29 02:27:40 dglo Exp $
  */
 
 #include <fcntl.h>
@@ -32,8 +32,8 @@
 #include <X11/Xaw/Command.h>
 #include <X11/Xaw/Paned.h>
 
-#include "xless.h"
-#include "XLessHlp.icn"
+#include "xfewer.h"
+#include "XFewerHlp.icn"
 
 static Widget createHelp __P((Widget));
 static void PopdownHelp __P((Widget, XtPointer, XtPointer));
@@ -83,9 +83,9 @@ Widget top;
 			    XtNiconName, helpIconName,
 			    XtNiconPixmap,
 			      XCreateBitmapFromData(disp, XRootWindow(disp, 0),
-						    XLessHelp_bits,
-						    XLessHelp_width,
-						    XLessHelp_height),
+						    XFewerHelp_bits,
+						    XFewerHelp_width,
+						    XFewerHelp_height),
 			    NULL);
 
   pane = XtVaCreateManagedWidget("helpPane", panedWidgetClass, base,

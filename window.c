@@ -18,7 +18,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * $Header: /usr/sww/share/src/X11R6/local/applications/xless-1.7/RCS/window.c,v 1.24 1994/07/29 02:34:16 dglo Exp $
+ * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/window.c,v 1.24 1994/07/29 02:34:16 dglo Exp $
  */
 
 #include <stdio.h>
@@ -34,10 +34,10 @@
 
 #include <X11/Xmu/Converters.h>
 
-#include "xless.h"
-#include "XLessWin.icn"
+#include "xfewer.h"
+#include "XFewerWin.icn"
 
-/* list of all xless windows */
+/* list of all xfewer windows */
 WindowInfo *windowlist = 0;
 int windowcount = 0;
 
@@ -59,7 +59,7 @@ createWindowInfo()
   wi->allocated = 0;
   wi->used = 0;
   wi->file = NULL;
-  wi->flag = XLessClearFlag;
+  wi->flag = XFewerClearFlag;
   wi->dataHeight = wi->dataWidth = 0;
   wi->searchBuf = wi->newWindowBuf = wi->changeFileBuf = NULL;
   wi->inputInfo = NULL;
@@ -111,7 +111,7 @@ const char *filename;
   const char *geom;
   Widget base, mainFrame;
   WindowInfo *wi;
-  XLessFlag flag = XLessClearFlag;
+  XFewerFlag flag = XFewerClearFlag;
   const char *fixedName;
   static Widget badFileMsg = 0;
 
@@ -140,7 +140,7 @@ const char *filename;
     if (filename && *filename == '~') {
       filename = TildeExpand(filename);
       if (*filename != '~')
-	flag |= XLessFreeFilename;
+	flag |= XFewerFreeFilename;
     }
 #endif /* TILDE_EXPANSION */
 
@@ -194,9 +194,9 @@ const char *filename;
 			    XtNgeometry, geom,
 			    XtNiconPixmap,
 			       XCreateBitmapFromData(disp, XRootWindow(disp,0),
-						     XLessWin_bits,
-						     XLessWin_width,
-						     XLessWin_height),
+						     XFewerWin_bits,
+						     XFewerWin_width,
+						     XFewerWin_height),
 			    NULL);
 
   /* set icon & title name for new window */
@@ -266,7 +266,7 @@ WindowInfo *wi;
   XtFree((char *)wi->memory);
 
   /* free filename string if it was malloc'd */
-  if (wi->flag & XLessFreeFilename)
+  if (wi->flag & XFewerFreeFilename)
     XtFree((char *)wi->file);
 
   /* free any input info */

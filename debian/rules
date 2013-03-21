@@ -32,7 +32,7 @@ install-stamp: build-stamp
 	dh_installdirs
 
 	# Add here commands to install the package into debian/tmp.
-	$(MAKE) -f Makefile.debian install DESTDIR=$(CURDIR)/debian/xless
+	$(MAKE) -f Makefile.debian install DESTDIR=$(CURDIR)/debian/xfewer
 
 	touch install-stamp
 
@@ -44,9 +44,9 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installdocs xless.help
+	dh_installdocs xfewer.help
 	dh_installmenu
-	dh_installman xless.man
+	dh_installman xfewer.man
 	dh_installchangelogs
 	dh_link
 	dh_strip

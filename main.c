@@ -18,7 +18,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * $Header: /usr/sww/share/src/X11R6/local/applications/xless-1.7/RCS/main.c,v 1.36 1994/07/29 02:55:50 dglo Exp $
+ * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/main.c,v 1.36 1994/07/29 02:55:50 dglo Exp $
  */
 
 #include <stdio.h>
@@ -32,9 +32,9 @@
 
 #include <X11/Xmu/Xmu.h>
 
-#include "xless.h"
+#include "xfewer.h"
 #include "version.h"
-#include "XLessTop.icn"
+#include "XFewerTop.icn"
 
 #define XtRSearchType	"SearchType"
 
@@ -44,53 +44,53 @@ Display *disp;
 const char *className;
 const char *progname;
 
-XLessResources resources;
+XFewerResources resources;
 
 static XtResource privResources[] = {
   {XtNgeometry, XtCGeometry, XtRString, sizeof(String),
-     XtOffset(XLessResources *, geometry), XtRString, NULL},
+     XtOffset(XFewerResources *, geometry), XtRString, NULL},
   {XtNname, "Name", XtRString, sizeof(String),
-     XtOffset(XLessResources *, name), XtRString, NULL},
+     XtOffset(XFewerResources *, name), XtRString, NULL},
   {XtNtitle, XtCTitle, XtRString, sizeof(String),
-     XtOffset(XLessResources *, title), XtRString, NULL},
+     XtOffset(XFewerResources *, title), XtRString, NULL},
   {"helpFile", XtCFile, XtRString, sizeof(String),
-     XtOffset(XLessResources *, helpFile), XtRString, HELPFILE},
+     XtOffset(XFewerResources *, helpFile), XtRString, HELPFILE},
   {"standardCur", XtCCursor, XtRCursor, sizeof(Cursor),
-     XtOffset(XLessResources *, cursors.top), XtRString, STANDARDCUR},
+     XtOffset(XFewerResources *, cursors.top), XtRString, STANDARDCUR},
   {"dialogCur", XtCCursor, XtRCursor, sizeof(Cursor),
-     XtOffset(XLessResources *, cursors.dialog), XtRString, STANDARDCUR},
+     XtOffset(XFewerResources *, cursors.dialog), XtRString, STANDARDCUR},
   {"standardFont", XtCFont, XtRFontStruct, sizeof(XFontStruct *),
-     XtOffset(XLessResources *, fonts.standard), XtRString, STANDARDFONT},
+     XtOffset(XFewerResources *, fonts.standard), XtRString, STANDARDFONT},
   {"textFont", XtCFont, XtRFontStruct, sizeof(XFontStruct *),
-     XtOffset(XLessResources *, fonts.text), XtRString, TEXTFONT},
+     XtOffset(XFewerResources *, fonts.text), XtRString, TEXTFONT},
   {"labelFont", XtCFont, XtRFontStruct, sizeof(XFontStruct *),
-     XtOffset(XLessResources *, fonts.label), XtRString, LABELFONT},
+     XtOffset(XFewerResources *, fonts.label), XtRString, LABELFONT},
   {"buttonFont", XtCFont, XtRFontStruct, sizeof(XFontStruct *),
-     XtOffset(XLessResources *, fonts.button), XtRString, BUTTONFONT},
+     XtOffset(XFewerResources *, fonts.button), XtRString, BUTTONFONT},
   {"editor", "Editor", XtRString, sizeof(String),
-     XtOffset(XLessResources *, editor), XtRString, DEFEDITOR},
+     XtOffset(XFewerResources *, editor), XtRString, DEFEDITOR},
   {"editorDoesWindows", "EditorDoesWindows", XtRBoolean, sizeof(Boolean),
-     XtOffset(XLessResources *, editorDoesWindows), XtRString, "False"},
+     XtOffset(XFewerResources *, editorDoesWindows), XtRString, "False"},
   {"printCmd", "PrintCommand", XtRString, sizeof(String),
-     XtOffset(XLessResources *, oldPrintCmd), XtRString, NULL},
+     XtOffset(XFewerResources *, oldPrintCmd), XtRString, NULL},
   {"printCommand", "PrintCommand", XtRString, sizeof(String),
-     XtOffset(XLessResources *, printCmd), XtRString, PRINTCMD},
+     XtOffset(XFewerResources *, printCmd), XtRString, PRINTCMD},
   {"maxWindows", "MaxWindows", XtRInt, sizeof(int),
-     XtOffset(XLessResources *, maxWindows), XtRString, "0"},
+     XtOffset(XFewerResources *, maxWindows), XtRString, "0"},
   {"quitButton", "QuitButton", XtRBoolean, sizeof(Boolean),
-     XtOffset(XLessResources *, quitButton), XtRString, "False"},
+     XtOffset(XFewerResources *, quitButton), XtRString, "False"},
   {"sizeToFit", "SizeToFit", XtRBoolean, sizeof(Boolean),
-     XtOffset(XLessResources *, sizeToFit), XtRString, "True"},
+     XtOffset(XFewerResources *, sizeToFit), XtRString, "True"},
   {"removePath", "RemovePath", XtRBoolean, sizeof(Boolean),
-     XtOffset(XLessResources *, removePath), XtRString, "True"},
+     XtOffset(XFewerResources *, removePath), XtRString, "True"},
   {"helpMessage", "HelpMessage", XtRBoolean, sizeof(Boolean),
-     XtOffset(XLessResources *, helpMessage), XtRString, "False"},
+     XtOffset(XFewerResources *, helpMessage), XtRString, "False"},
   {"defaultSearchType", "SearchType", XtRSearchType, sizeof(unsigned),
-     XtOffset(XLessResources *, defaultSearchType), XtRString, "ExactMatch"},
+     XtOffset(XFewerResources *, defaultSearchType), XtRString, "ExactMatch"},
   {"monitorFile", "MonitorFile", XtRBoolean, sizeof(Boolean),
-     XtOffset(XLessResources *, monitorFile), XtRString, "False"},
+     XtOffset(XFewerResources *, monitorFile), XtRString, "False"},
   {"printVersion", "PrintVersion", XtRBoolean, sizeof(Boolean),
-     XtOffset(XLessResources *, printVersion), XtRString, "False"},
+     XtOffset(XFewerResources *, printVersion), XtRString, "False"},
 };
 
 static XrmOptionDescRec options[] = {
@@ -156,13 +156,13 @@ XtPointer *destructorData;
   XtFree(tmp);
 
   if (q == QExactMatch)
-    done(unsigned, XLessClearFlag);
+    done(unsigned, XFewerClearFlag);
 
   if (q == QCaseInsensitive)
-    done(unsigned, XLessSearchInsensitive);
+    done(unsigned, XFewerSearchInsensitive);
 
   if (q == QRegularExpression)
-    done(unsigned, XLessSearchRegExpr);
+    done(unsigned, XFewerSearchRegExpr);
 
   XtDisplayStringConversionWarning(display, fromVal->addr, "XtRSearchType");
   return False;
@@ -221,7 +221,7 @@ char *argv[];
   else
     progname = argv[0];
 
-  toplevel = XtVaAppInitialize(&context, XLESS_CLASS,
+  toplevel = XtVaAppInitialize(&context, XFEWER_CLASS,
 			       options, XtNumber(options),
 			       &argc, argv,
 			       NULL, NULL);
@@ -235,7 +235,7 @@ char *argv[];
 
   /* print our version number if user wants it */
   if (resources.printVersion)
-    printf("XLess version %s\n", VERSION);
+    printf("XFewer version %s\n", VERSION);
 
   /* complain about old printCmd resource usage */
   if (resources.oldPrintCmd != NULL) {
@@ -250,7 +250,7 @@ char *argv[];
   }
 
   /* save class name */
-  className = XLESS_CLASS;
+  className = XFEWER_CLASS;
 
   XtAppAddActions(context, actions, numactions);
 
@@ -259,9 +259,9 @@ char *argv[];
   XtVaSetValues(toplevel,
 		XtNiconPixmap, XCreateBitmapFromData(disp,
 						     XRootWindow(disp, 0),
-						     XLessTop_bits,
-						     XLessTop_width,
-						     XLessTop_height),
+						     XFewerTop_bits,
+						     XFewerTop_width,
+						     XFewerTop_height),
 		NULL);
 
   CheckFonts();

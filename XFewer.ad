@@ -1,4 +1,4 @@
-!$Header: /usr/sww/share/src/X11R6/local/applications/xless-1.5/RCS/XLess.ad,v 1.8 1994/06/01 00:46:29 dglo Exp $
+!$Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.5/RCS/XFewer.ad,v 1.8 1994/06/01 00:46:29 dglo Exp $
 
 *standardFont:	fixed
 *textFont:		-misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-1

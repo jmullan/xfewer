@@ -1,16 +1,16 @@
-Source: xless
+Source: xfewer
 Section: text
 Priority: optional
 Maintainer: Felipe Augusto van de Wiel (faw) <faw@debian.org>
 Build-Depends: libxaw7-dev, debhelper (>= 5)
 Standards-Version: 3.7.3
-Vcs-Svn: svn://svn.debian.org/svn/collab-maint/deb-maint/xless/trunk/
-Vcs-Browser: http://svn.debian.org/viewsvn/collab-maint/deb-maint/xless/trunk/
+Vcs-Svn: svn://svn.debian.org/svn/collab-maint/deb-maint/xfewer/trunk/
+Vcs-Browser: http://svn.debian.org/viewsvn/collab-maint/deb-maint/xfewer/trunk/
 
-Package: xless
+Package: xfewer
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: file browsing tool for the X Window System
- xless allows you to view information in an X window. It allows
+ xfewer allows you to view information in an X window. It allows
  filename (or multiple filenames) arguments, or input via STDIN.
  It can print the current buffer and do regular expression searches.

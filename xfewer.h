@@ -18,25 +18,25 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- *	$Header: /usr/sww/share/src/X11R6/local/applications/xless-1.7/RCS/xless.h,v 1.53 1994/07/29 02:55:34 dglo Exp $
+ *	$Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/xfewer.h,v 1.53 1994/07/29 02:55:34 dglo Exp $
  *
  */
 
-#ifndef XLESS_H
-#define XLESS_H
+#ifndef XFEWER_H
+#define XFEWER_H
 
 /* Useful defines */
 
-#define XLESS_MEMORY_CHUNK	512000
+#define XFEWER_MEMORY_CHUNK	512000
 
-#define XLESS_BUTTON_WIDTH	100
+#define XFEWER_BUTTON_WIDTH	100
 
-#define XLESS_DIALOG_WIDTH	350
-#define XLESS_DIALOG_HEIGHT	150
+#define XFEWER_DIALOG_WIDTH	350
+#define XFEWER_DIALOG_HEIGHT	150
 
-#define XLESS_INPUT_WIDTH	200
+#define XFEWER_INPUT_WIDTH	200
 
-#define XLESS_MAX_INPUT		256
+#define XFEWER_MAX_INPUT		256
 
 /* handle differences between K&R and ANSI C */
 #ifndef __P
@@ -63,7 +63,7 @@
  */
 
 #ifndef HELPFILE
-#define HELPFILE "/usr/share/doc/xless/xless.help"
+#define HELPFILE "/usr/share/doc/xfewer/xfewer.help"
 #endif
 
 /*
@@ -78,9 +78,9 @@
 /*
  * Application class.  You shouldn't change this.
  */
-#ifndef XLESS_CLASS
-#define XLESS_CLASS "XLess"
-#endif /* XLESS_CLASS */
+#ifndef XFEWER_CLASS
+#define XFEWER_CLASS "XFewer"
+#endif /* XFEWER_CLASS */
 
 /* Default fonts. */
 #define STANDARDCUR "left_ptr"
@@ -95,13 +95,13 @@
 /*
  * Values for WindowInfo flag
  */
-typedef enum _XLessFlagBits {
-  XLessClearFlag = 0x0000,		/* turn off all bits */
-  XLessFreeFilename = 0x0001,		/* filename uses malloc'd memory */
-  XLessAddedNewline = 0x0002,		/* added newline to end of text */
-  XLessSearchInsensitive = 0x0100,	/* case-insensitive search */
-  XLessSearchRegExpr = 0x0200		/* regular-expression search */
-} XLessFlag;
+typedef enum _XFewerFlagBits {
+  XFewerClearFlag = 0x0000,		/* turn off all bits */
+  XFewerFreeFilename = 0x0001,		/* filename uses malloc'd memory */
+  XFewerAddedNewline = 0x0002,		/* added newline to end of text */
+  XFewerSearchInsensitive = 0x0100,	/* case-insensitive search */
+  XFewerSearchRegExpr = 0x0200		/* regular-expression search */
+} XFewerFlag;
 
 /*
  * This structure holds info needed to stop and start input
@@ -114,7 +114,7 @@ typedef struct _InputInfo {
 } InputInfo;
 
 /*
- * This structure holds everything xless needs to know about
+ * This structure holds everything xfewer needs to know about
  * each of its windows.
  */
 typedef struct _WindowInfo {
@@ -138,7 +138,7 @@ typedef struct _WindowInfo {
   const char *file;
 
   /* miscellaneous flag values */
-  XLessFlag flag;
+  XFewerFlag flag;
 
   /* height (in lines), width (in chars) */
   unsigned dataHeight, dataWidth;
@@ -151,28 +151,28 @@ typedef struct _WindowInfo {
 
 } WindowInfo;
 
-typedef struct _XLessFonts {
+typedef struct _XFewerFonts {
   XFontStruct
     *standard,	/* The font used if no fonts specied */
-    *text,			/* Font used for XLess text */
+    *text,			/* Font used for XFewer text */
     *label,			/* Font used for labels in dialog boxes */
     *button;		/* Font used for commandbuttons */
-} XLessFonts;
+} XFewerFonts;
 
-typedef struct _XLessCursors {
+typedef struct _XFewerCursors {
   Cursor
-    top,			/* The top cursor, default for XLess */
+    top,			/* The top cursor, default for XFewer */
     dialog;			/* Cursor for dialog boxes */
-} XLessCursors;
+} XFewerCursors;
 
 /* Resource manager sets these */
 
-typedef struct _XLessResources {
+typedef struct _XFewerResources {
   String geometry;		/* width/height of text window */
   String name;			/* instance name */
   String title;			/* title name */
-  XLessFonts fonts;		/* The fonts used for XLess */
-  XLessCursors cursors;		/* The cursors used for XLess */
+  XFewerFonts fonts;		/* The fonts used for XFewer */
+  XFewerCursors cursors;		/* The cursors used for XFewer */
   String helpFile;		/* The help file name */
   Boolean editorDoesWindows;	/* does editor come up in a window? */
   String editor;		/* default editor */
@@ -187,7 +187,7 @@ typedef struct _XLessResources {
   Boolean monitorFile;		/* should we keep checking for input? */
   Boolean printVersion;		/* should we keep print our version number? */
   String oldPrintCmd;		/* catch old resource name usage */
-} XLessResources;
+} XFewerResources;
 
 /* prototypes from help.c */
 void PopupHelp __P((Widget, XtPointer, XtPointer));
@@ -240,7 +240,7 @@ int main __P((int, char *[]));
 extern XtAppContext context;
 extern Widget toplevel;
 extern Display *disp;
-extern XLessResources resources;
+extern XFewerResources resources;
 extern const char *progname;
 extern const char *className;
 
@@ -257,4 +257,4 @@ extern int windowcount;
 extern XtActionsRec actions[];
 extern Cardinal numactions;
 
-#endif /* XLESS_H */
+#endif /* XFEWER_H */

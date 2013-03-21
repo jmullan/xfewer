@@ -18,7 +18,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * $Header: /usr/sww/share/src/X11R6/local/applications/xless-1.7/RCS/popup.c,v 1.29 1994/06/09 22:59:12 dglo Exp $
+ * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/popup.c,v 1.29 1994/06/09 22:59:12 dglo Exp $
  */
 
 #include <stdio.h>
@@ -35,9 +35,9 @@
 #include <X11/Xaw/Label.h>
 #include <X11/Xaw/Toggle.h>
 
-#include "xless.h"
+#include "xfewer.h"
 
-#define SEARCH_BITS	((unsigned )(XLessSearchInsensitive|XLessSearchRegExpr))
+#define SEARCH_BITS	((unsigned )(XFewerSearchInsensitive|XFewerSearchRegExpr))
 
 /* stole this chunk from xdm/dm.c */
 #if defined(USE_PROTOTYPES) || defined(__STDC__)
@@ -105,7 +105,7 @@ char *selection;
 				  XtNfromHoriz, NULL,
 				  XtNfromVert, lbl,
 				  XtNleft, XtChainLeft,
-				  XtNlength, XLESS_MAX_INPUT,
+				  XtNlength, XFEWER_MAX_INPUT,
 				  XtNresizable, True,
 				  XtNright, XtChainRight,
 				  XtNstring, selection,
@@ -115,7 +115,7 @@ char *selection;
 				  XtNtranslations, xlate,
 				  XtNuseStringInPlace, True,
 				  XtNvertDistance, 0,
-				  XtNwidth, XLESS_INPUT_WIDTH,
+				  XtNwidth, XFEWER_INPUT_WIDTH,
 				  NULL);
 
   XtSetKeyboardFocus(form, input);
@@ -133,7 +133,7 @@ char *selection;
 				    XtNleft, XtChainLeft,
 				    XtNright, XtChainLeft,
 				    XtNvertDistance, 5,
-				    XtNwidth, XLESS_BUTTON_WIDTH,
+				    XtNwidth, XFEWER_BUTTON_WIDTH,
 				    NULL);
 
   callback[0].callback = Cancel;
@@ -148,7 +148,7 @@ char *selection;
 				   XtNleft, XtChainRight,
 				   XtNright, XtChainRight,
 				   XtNvertDistance, 5,
-				   XtNwidth, XLESS_BUTTON_WIDTH,
+				   XtNwidth, XFEWER_BUTTON_WIDTH,
 				   NULL);
 
   XtInstallAccelerators(input, confirm);
@@ -166,18 +166,18 @@ XtPointer callData;
   int searchType = wi->flag & SEARCH_BITS;
 
   if (!searchType)
-    wi->flag |= XLessSearchInsensitive;
-  else if (searchType && ((searchType & XLessSearchInsensitive) == searchType))
-    wi->flag = (wi->flag & ~SEARCH_BITS) | XLessSearchRegExpr;
-  else if (searchType && ((searchType & XLessSearchRegExpr) == searchType))
+    wi->flag |= XFewerSearchInsensitive;
+  else if (searchType && ((searchType & XFewerSearchInsensitive) == searchType))
+    wi->flag = (wi->flag & ~SEARCH_BITS) | XFewerSearchRegExpr;
+  else if (searchType && ((searchType & XFewerSearchRegExpr) == searchType))
     wi->flag &= ~SEARCH_BITS;
   else
-    wi->flag = (wi->flag & ~SEARCH_BITS) | XLessSearchInsensitive;
+    wi->flag = (wi->flag & ~SEARCH_BITS) | XFewerSearchInsensitive;
 
   XtVaSetValues(widget,
-		  XtNlabel, (wi->flag & XLessSearchInsensitive ?
+		  XtNlabel, (wi->flag & XFewerSearchInsensitive ?
 			     " Case Insensitive " :
-			     (wi->flag & XLessSearchRegExpr ?
+			     (wi->flag & XFewerSearchRegExpr ?
 			     "Regular Expression" :
 			     "   Exact Match    ")),
 		  NULL);
@@ -238,7 +238,7 @@ char *selection;
 				  XtNfromHoriz, NULL,
 				  XtNfromVert, lbl,
 				  XtNleft, XtChainLeft,
-				  XtNlength, XLESS_MAX_INPUT,
+				  XtNlength, XFEWER_MAX_INPUT,
 				  XtNresizable, True,
 				  XtNright, XtChainRight,
 				  XtNstring, selection,
@@ -248,18 +248,18 @@ char *selection;
 				  XtNtranslations, xlate,
 				  XtNuseStringInPlace, True,
 				  XtNvertDistance, 0,
-				  XtNwidth, XLESS_INPUT_WIDTH,
+				  XtNwidth, XFEWER_INPUT_WIDTH,
 				  NULL);
 
   XtSetKeyboardFocus(form, input);
 
   wi->flag &= ~SEARCH_BITS;
-  if (resources.defaultSearchType == XLessSearchInsensitive) {
+  if (resources.defaultSearchType == XFewerSearchInsensitive) {
     searchLabel = "      Case Insensitive     ";
-    wi->flag |= XLessSearchInsensitive;
-  } else if (resources.defaultSearchType == XLessSearchRegExpr) {
+    wi->flag |= XFewerSearchInsensitive;
+  } else if (resources.defaultSearchType == XFewerSearchRegExpr) {
     searchLabel = "     Regular Expression    ";
-    wi->flag |= XLessSearchRegExpr;
+    wi->flag |= XFewerSearchRegExpr;
   } else {
     searchLabel = "        Exact Match        ";
   }
@@ -290,7 +290,7 @@ char *selection;
 				   XtNleft, XtChainLeft,
 				   XtNright, XtChainLeft,
 				   XtNvertDistance, 5,
-				   XtNwidth, XLESS_BUTTON_WIDTH,
+				   XtNwidth, XFEWER_BUTTON_WIDTH,
 				   NULL);
 
   callback[0].callback = Cancel;
@@ -305,7 +305,7 @@ char *selection;
 				   XtNleft, XtChainRight,
 				   XtNright, XtChainRight,
 				   XtNvertDistance, 5,
-				   XtNwidth, XLESS_BUTTON_WIDTH,
+				   XtNwidth, XFEWER_BUTTON_WIDTH,
 				   NULL);
 
   XtInstallAccelerators(input, search);
@@ -399,7 +399,7 @@ va_dcl
 				     XtNleft, XtChainRight,
 				     XtNright, XtChainRight,
 				     XtNvertDistance, 1,
-				     XtNwidth, XLESS_BUTTON_WIDTH,
+				     XtNwidth, XFEWER_BUTTON_WIDTH,
 				     NULL);
 
     XtInstallAccelerators(form, button);

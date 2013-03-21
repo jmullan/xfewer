@@ -18,7 +18,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * $Header: /usr/sww/share/src/X11R6/local/applications/xless-1.7/RCS/util.c,v 1.22 1994/06/16 22:33:46 dglo Exp $
+ * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/util.c,v 1.22 1994/06/16 22:33:46 dglo Exp $
  */
 
 
@@ -32,7 +32,7 @@
 
 #include <X11/Xaw/Text.h>
 
-#include "xless.h"
+#include "xfewer.h"
 
 XFontStruct *buttonFont;
 XFontStruct *labelFont;
@@ -76,8 +76,8 @@ Widget top, wdg;
 		XtNwidth, &wd,
 		NULL);
 
-  if (wd == 0) wd = XLESS_DIALOG_WIDTH;
-  if (he == 0) he = XLESS_DIALOG_HEIGHT;
+  if (wd == 0) wd = XFEWER_DIALOG_WIDTH;
+  if (he == 0) he = XFEWER_DIALOG_HEIGHT;
 
   x = rx - wd/2;
   y = ry - he/2;

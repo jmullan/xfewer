@@ -25,7 +25,7 @@ Changes for version 1.7:
    Tim Medley <tlm@frb.gov>)
 
 Changes for version 1.6.1:
- - pressing [Help] button caused xless to dump core (reported by several
+ - pressing [Help] button caused xfewer to dump core (reported by several
    people, fixed by Martin Boyer <gamin@ireq-robot.hydro.qc.ca>)
  - cleaned up "Features" list in help message & README
 
@@ -34,7 +34,7 @@ Changes for version 1.6:
  - cleaned up code, help message & README
  - added 'defaultSearchType' resource (suggested by Dale W. King
    <c23dwk@kocrsv01.delcoelect.com>)
- - added code to let xless continually monitor input file, like 'tail -f'
+ - added code to let xfewer continually monitor input file, like 'tail -f'
  - added 'monitorFile' resource and '-f' option to enable file monitoring code
 
 Changes for version 1.5:
@@ -55,7 +55,7 @@ Changes for version 1.5:
  
 Changes for version 1.4:
 
- - added 'maxWindows' resource to limit damage done by 'xless *' (suggested
+ - added 'maxWindows' resource to limit damage done by 'xfewer *' (suggested
    by Markus Koch <raistlin@uni-paderborn.de>)
  - cleaned up help window (suggested by Len Makin <len@mel.dit.csiro.au>)
  - cleaned up manual page
@@ -64,7 +64,7 @@ Changes for version 1.4:
  - tried to eliminate as much code duplication as practical
  - tilde expansion performed on file names (suggested by Michael J. Thibodeau
    <mike@ra.cs.umb.edu>)
- - icon & title name are now set to 'xless:filename'
+ - icon & title name are now set to 'xfewer:filename'
  - title line is gone because titlebar name should now be correct
  - '?' is an accelerator for the [Help] button, 'Q' is an accelerator for the
    [Close window] button and 'Meta-Q' is an accelerator for the [Quit] button
@@ -82,7 +82,7 @@ Changes for version 1.4:
  - Set window manager size hints
  - Change default textFont to Courier 12; variable-width fonts screw up
    geometry guess
- - Add 'namePrefix' resource which adds 'xless:' (or whatever) to the
+ - Add 'namePrefix' resource which adds 'xfewer:' (or whatever) to the
    front of all icon names and window titles
  - Add 'removePath' resource which, if true, truncates the path name to
    just the last element so names are somewhat more readable
@@ -114,5 +114,5 @@ Changes for version 1.1:
  - added 'editorDoesWindows' which can be set if your editor is X-savvy
    enough to come up in its own window
  - added a 'quit()' action
- - created XLess.ad, which incorporates the previous .Xresources with
-   a bunch of keyboard bindings to make xless behave more like less
+ - created XFewer.ad, which incorporates the previous .Xresources with
+   a bunch of keyboard bindings to make xfewer behave more like less

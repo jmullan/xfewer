@@ -1,4 +1,4 @@
-This is XLess version 1.7, a file browsing tool for the X Window System
+This is XFewer version 1.7, a file browsing tool for the X Window System
 
 CREDITS:
    By Dave Glowacki - UCB Software Warehouse
@@ -41,8 +41,8 @@ FEATURES:
       the VISUAL or EDITOR environment variable)
 
 AVAILABLE FROM:
-   ftp.cs.berkeley.edu:/ucb/people/dglo/xless/xless-1.7.tar.gz
-   ftp.x.org:/contrib/applications/xless-1.7.tar.gz
+   ftp.cs.berkeley.edu:/ucb/people/dglo/xfewer/xfewer-1.7.tar.gz
+   ftp.x.org:/contrib/applications/xfewer-1.7.tar.gz
 
 TESTED ON:
    SunOS 4.1.3
@@ -56,7 +56,7 @@ INSTALLATION:
 
 CAVEAT:
    The color resources are stored in the global app-defaults directory in
-   a file named 'XLess-color'.  If you have a color display and are running
+   a file named 'XFewer-color'.  If you have a color display and are running
    at least X11R5, you may want to add a line like this to your personal
    resources file:
 

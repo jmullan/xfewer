@@ -1,14 +1,14 @@
-.TH Xless 1x "6 June 1993" "X Version 11"
+.TH Xfewer 1x "6 June 1993" "X Version 11"
 .SH NAME
-xless - File browsing program for the X Window System.
+xfewer - File browsing program for the X Window System.
 .SH SYNOPSIS
-.B xless
+.B xfewer
 .I [-f] [-toolkitoption ...] [filename ...]
 .SH DESCRIPTION
-Xless pops up a window on the display specified, containing the file
+Xfewer pops up a window on the display specified, containing the file
 specified on the command line or piped in from stdin.  This file may easily
 be viewed using the scrollbar to the left of the window.
-Xless also takes input from the standard input.
+Xfewer also takes input from the standard input.
 Extra function are available on the toolbox to the right of the window:
 .LP
 .TP 10
@@ -25,27 +25,27 @@ variable EDITOR) on the current file
 .TP
 - Change file in the current window
 .TP
-- Open a new \fBxless\fP window to display the specified file
+- Open a new \fBxfewer\fP window to display the specified file
 .TP
 - Print the current file
 .TP
 - Close the current window
 .LP
 For further information on using
-.B xless
+.B xfewer
 please read the online
 help information.  The rest of this manual page will discuss
 customization of
-.B xless
+.B xfewer
 to suit the needs of a particular user.
 .SH "OPTIONS"
 .LP
-Xless is build upon the \fIX Toolkit (Xt)\fP and as such understands all
+Xfewer is build upon the \fIX Toolkit (Xt)\fP and as such understands all
 the normal command line options (as described in \fIX(1)\fP.
 It also supports:
 .TP
 .B \-follow
-Continually check the file for new input (so that \fBxless\fP behaves like
+Continually check the file for new input (so that \fBxfewer\fP behaves like
 \fItail -f\fP).
 .TP
 .B -f
@@ -54,10 +54,10 @@ Alias for \fI-f\fP.
 .B -help
 Print a list of valid options.
 .B -version
-Print the version number of this \fBxless\fP executable.
+Print the version number of this \fBxfewer\fP executable.
 .SH "WIDGET AND RESOURCE NAMES"
 .LP
-In addition to the usual widget resources, Xless has the following
+In addition to the usual widget resources, Xfewer has the following
 application resources:
 .LP
 .TP 10
@@ -96,15 +96,15 @@ The name of the file is simply appended to this string.
 (\fIenscript -G\fP is nice, if you've got it.)
 .TP
 .B maxWindows
-Maximum number of windows which \fBxless\fB
+Maximum number of windows which \fBxfewer\fB
 will display at one time.
 Set this to zero if you don't want a limit.
-(This is a good	thing to set if you tend to run \fIxless *\fP
+(This is a good	thing to set if you tend to run \fIxfewer *\fP
 in directories with lots of files.)
 .TP
 .B quitButton
 Set to TRUE if you want a Quit button on every window which, when clicked,
-will quit \fBevery\fP window started from this copy of \fBxless\fP.
+will quit \fBevery\fP window started from this copy of \fBxfewer\fP.
 The default is FALSE.
 .TP
 .B sizeToFit
@@ -113,7 +113,7 @@ up to the maximum size specified by 'geometry'.
 .TP
 .B removePath
 Set to TRUE if you want the directory portion of the file path removed.
-For example, a path like \fI/usr/src/X11/xless/main.c\fP would be shortened to
+For example, a path like \fI/usr/src/X11/xfewer/main.c\fP would be shortened to
 \fImain.c\fP.  The default is TRUE.
 .TP
 .B defaultSearchType
@@ -123,7 +123,7 @@ Possible values are \fBExactMatch\fP (which is the default),
 .TP
 .B monitorFile
 Set to TRUE if you want the file to be continually checked for new input
-(so that \fBxless\fP behaves like \fItail -f\fP).  The default is FALSE.
+(so that \fBxfewer\fP behaves like \fItail -f\fP).  The default is FALSE.
 .LP
 .SH "COLOR RESOURCES"
 .LP
@@ -143,7 +143,7 @@ to add a line like:
 .LP
 to your personal resources file.  This will allow you to get the
 color-related resources for not only
-.B xless,
+.B xfewer,
 but for every program which sets up its own color resources.
 .LP
 Versions of X earlier than X11R5 don't support the

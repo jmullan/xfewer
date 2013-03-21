@@ -18,7 +18,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * $Header: /usr/sww/share/src/X11R6/local/applications/xless-1.7/RCS/init.c,v 1.45 1994/07/29 03:07:33 dglo Exp $
+ * $Header: /usr/sww/share/src/X11R6/local/applications/xfewer-1.7/RCS/init.c,v 1.45 1994/07/29 03:07:33 dglo Exp $
  */
 
 #include <stdio.h>
@@ -38,7 +38,7 @@
 #include <X11/Xaw/Form.h>
 #include <X11/Xaw/Paned.h>
 
-#include "xless.h"
+#include "xfewer.h"
 
 #define FontWidth(fnt)		((fnt)->max_bounds.width)
 #define FontHeight(fnt)		((fnt)->ascent + (fnt)->descent)
@@ -126,17 +126,17 @@ XtInputId *id;
   }
 
   if (nbytes > 0) {
-    needed = wi->used + nbytes + (wi->flag & XLessAddedNewline ? 0 : 1);
+    needed = wi->used + nbytes + (wi->flag & XFewerAddedNewline ? 0 : 1);
     if (needed > wi->allocated) {
       wi->memory = XtRealloc((char *)wi->memory, needed);
       wi->allocated = needed;
     }
-    lastchar = wi->used - (wi->flag & XLessAddedNewline ? 2 : 1);
+    lastchar = wi->used - (wi->flag & XFewerAddedNewline ? 2 : 1);
     bottom = (char *)&(wi->memory[lastchar]);
     strncpy(bottom, buffer, (size_t )nbytes);
-    wi->flag = (wi->flag & ~(unsigned )XLessAddedNewline);
+    wi->flag = (wi->flag & ~(unsigned )XFewerAddedNewline);
     if (bottom[nbytes-1] != '\n') {
-      wi->flag |= XLessAddedNewline;
+      wi->flag |= XFewerAddedNewline;
       bottom[nbytes++] = '\n';
     }
     bottom[nbytes] = 0;
@@ -149,7 +149,7 @@ XtInputId *id;
 		  NULL);
     XawTextSetInsertionPoint(wi->text,
 			     (pos != lastchar ? pos : wi->used -
-			      (wi->flag & XLessAddedNewline ? 2 : 1)));
+			      (wi->flag & XFewerAddedNewline ? 2 : 1)));
   } else {
 
     /* no input was waiting for us */
@@ -209,7 +209,7 @@ Cardinal *szp;
       *(data + fileinfo.st_size) = '\n';
       fileinfo.st_size++;
       if (wi)
-	wi->flag |= XLessAddedNewline;
+	wi->flag |= XFewerAddedNewline;
     }
   }
 
@@ -234,7 +234,7 @@ Cardinal *szp;
     size = 1;
     *data = '\n';
     if (wi) {
-      wi->flag |= XLessAddedNewline;
+      wi->flag |= XFewerAddedNewline;
       id = XtAppAddInput(context, 0, (XtPointer )XtInputReadMask,
 			 handleNewInput, (XtPointer )wi);
       wi->inputInfo = (InputInfo *)XtMalloc((Cardinal )sizeof(InputInfo));
@@ -247,12 +247,12 @@ Cardinal *szp;
   } else {
 
     /* read STDIN a chunk at a time */
-    data = (char *)XtMalloc(XLESS_MEMORY_CHUNK);
+    data = (char *)XtMalloc(XFEWER_MEMORY_CHUNK);
     size = 0;
     where = data;
-    while ((sz = read(fd, where, (size_t )XLESS_MEMORY_CHUNK)) != 0) {
+    while ((sz = read(fd, where, (size_t )XFEWER_MEMORY_CHUNK)) != 0) {
       size += sz;
-      newsz = size + XLESS_MEMORY_CHUNK;
+      newsz = size + XFEWER_MEMORY_CHUNK;
       data = (char *)XtRealloc(data, (unsigned)newsz);
       where = data + size;
     }
@@ -350,7 +350,7 @@ const char *label;
 			      XtNsensitive, (sensitive ? False : True),
 			      XtNtop, XtChainTop,
 			      XtNvertDistance, vertdist,
-			      XtNwidth, XLESS_BUTTON_WIDTH,
+			      XtNwidth, XFEWER_BUTTON_WIDTH,
 			      NULL);
 
   XtInstallAccelerators(wininfo->text, w);
