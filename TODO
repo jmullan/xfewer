@@ -1,0 +1,17 @@
+Check out RichText widget, see if it's usable.
+Clean up help file.
+Add a "Save" command to save STDIN.
+Add actions for all buttons
+Document actions
+Handle appropriate 'less' options & keys
+Use selection as pattern if [Search Next] is pressed and searchBuf is NULL
+	(suggested by Mark Phillips <phillips@eso.mc.xerox.com>)
+Allow for numbered lines
+	(suggested by "John A. Murphy" <jam@philabs.Philips.COM>)
+Add a status line like that in 'less': "Lines 8-30 of 71  Byte 635 of 1818  34%"
+	(suggested by "John A. Murphy" <jam@philabs.Philips.COM>)
+Allow text in dialog boxes to scroll
+	(suggested by Michael Short <short@CS.Berkeley.EDU)
+Have searches wrap (suggested by Michael Short <short@CS.Berkeley.EDU)
+Add a -searchMode option to set defaultSearchType resource
+	(suggested by Huzefa Mustaly <c23hm@kocrsv01.delcoelect.com>)

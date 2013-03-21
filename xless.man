@@ -1,0 +1,162 @@
+.TH Xless 1x "6 June 1993" "X Version 11"
+.SH NAME
+xless - File browsing program for the X Window System.
+.SH SYNOPSIS
+.B xless
+.I [-f] [-toolkitoption ...] [filename ...]
+.SH DESCRIPTION
+Xless pops up a window on the display specified, containing the file
+specified on the command line or piped in from stdin.  This file may easily
+be viewed using the scrollbar to the left of the window.
+Xless also takes input from the standard input.
+Extra function are available on the toolbox to the right of the window:
+.LP
+.TP 10
+- Pop up a help window.
+.TP
+- Search a specified pattern
+.TP
+- Search the next occurance of the above specified pattern
+.LP
+- Open a session of the editor (specified in the environment
+variable EDITOR) on the current file
+.TP
+- Reload the current file
+.TP
+- Change file in the current window
+.TP
+- Open a new \fBxless\fP window to display the specified file
+.TP
+- Print the current file
+.TP
+- Close the current window
+.LP
+For further information on using
+.B xless
+please read the online
+help information.  The rest of this manual page will discuss
+customization of
+.B xless
+to suit the needs of a particular user.
+.SH "OPTIONS"
+.LP
+Xless is build upon the \fIX Toolkit (Xt)\fP and as such understands all
+the normal command line options (as described in \fIX(1)\fP.
+It also supports:
+.TP
+.B \-follow
+Continually check the file for new input (so that \fBxless\fP behaves like
+\fItail -f\fP).
+.TP
+.B -f
+Alias for \fI-f\fP.
+.TP
+.B -help
+Print a list of valid options.
+.B -version
+Print the version number of this \fBxless\fP executable.
+.SH "WIDGET AND RESOURCE NAMES"
+.LP
+In addition to the usual widget resources, Xless has the following
+application resources:
+.LP
+.TP 10
+.B standardFont
+The default font to be used if any of the specified fonts are available.
+.TP
+.B textFont
+The fonts to use for the text.
+.TP
+.B labelFont
+The fonts to use for labels in dialog boxes.
+.TP
+.B buttonFont
+The fonts to use for labels on buttons.
+.TP
+.B standardCur
+The cursors to use in the main button window with the Quit and Help commands.
+.TP
+.B dialogCur
+The cursors to use in the toolbox and dialog box windows.
+.TP
+.B helpFile
+Name of a file to use instead of the system default helpfile.
+.TP
+.B editor
+Name of editor to invoke (if neither \fBVISUAL\fP nor \fBEDITOR\fP environment
+variable is set)
+.TP
+.B editorDoesWindows
+Set to TRUE if your editor brings up its own window
+(\fBxedit\fP or GNU \fBemacs\fP, for example.)
+.TP
+.B printCommand
+Command string used to print the current file.
+The name of the file is simply appended to this string.
+(\fIenscript -G\fP is nice, if you've got it.)
+.TP
+.B maxWindows
+Maximum number of windows which \fBxless\fB
+will display at one time.
+Set this to zero if you don't want a limit.
+(This is a good	thing to set if you tend to run \fIxless *\fP
+in directories with lots of files.)
+.TP
+.B quitButton
+Set to TRUE if you want a Quit button on every window which, when clicked,
+will quit \fBevery\fP window started from this copy of \fBxless\fP.
+The default is FALSE.
+.TP
+.B sizeToFit
+Set to TRUE if you want text windows to be only as big as they need to be,
+up to the maximum size specified by 'geometry'.
+.TP
+.B removePath
+Set to TRUE if you want the directory portion of the file path removed.
+For example, a path like \fI/usr/src/X11/xless/main.c\fP would be shortened to
+\fImain.c\fP.  The default is TRUE.
+.TP
+.B defaultSearchType
+Default method used to search the text (invoked from the Search button).
+Possible values are \fBExactMatch\fP (which is the default),
+\fBCaseInsensitive\fP and \fBRegularExpression\fP.
+.TP
+.B monitorFile
+Set to TRUE if you want the file to be continually checked for new input
+(so that \fBxless\fP behaves like \fItail -f\fP).  The default is FALSE.
+.LP
+.SH "COLOR RESOURCES"
+.LP
+If you have a color display and you're running at least X11R5, you may want
+to add a line like:
+.LP
+.RS
+.ft B
+.nf
+
+	#ifdef COLOR
+	*customization: -color
+	#endif
+.fi
+.ft R
+.RE
+.LP
+to your personal resources file.  This will allow you to get the
+color-related resources for not only
+.B xless,
+but for every program which sets up its own color resources.
+.LP
+Versions of X earlier than X11R5 don't support the
+.B customization
+resource.  If you're on one of those, you'll have to include the color
+resources in your personal resources file.
+.SH "SEE ALSO"
+X(1), X(8C), more(1), less(1)
+.SH BUGS
+There probably are some.
+.LP
+.SH AUTHOR
+Dave Glowacki (UC Berkeley Software Warehouse)	<dglo@CS.Berkeley.EDU>
+
+Originally by Carlo Lisa (MIT Project Athena) from
+xmore written by Chris Peterson (MIT Project Athena).

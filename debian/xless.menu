@@ -1,0 +1,2 @@
+?package(xless):needs="X11" section="Applications/Viewers" \
+  title="XLess" command="xless /usr/share/doc/xless/xless.help"

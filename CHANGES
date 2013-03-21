@@ -1,0 +1,118 @@
+Changes for version 1.7:
+ - pressing [Search Next] button before [Search] button has been pressed
+   caused a core dump (reported by Mark Phillips <phillips@eso.mc.xerox.com>)
+ - fixed search code so Case Insensitive mode is possible (reported by
+   Dale W. King <c23dwk@kocrsv01.delcoelect.com>)
+ - non-regexp search code is buggy; use regexp code for all searches
+   (indirectly suggested by Dale W. King <c23dwk@kocrsv01.delcoelect.com>)
+ - fixed popup windows so input line is as long as possible (suggested by
+   Roberto Horowitz <horowitz@canaima.Berkeley.EDU>)
+ - a couple of man page bugs were fixed by "Len Makin, CSIRO DIT Melbourne."
+   <Len.Makin@mel.dit.csiro.au>
+ - added '-version' option (suggested by Marty Leisner
+   <leisner@sdsp.mc.xerox.com>)
+ - stdin now has 'monitorFile' mode off by default (suggested by EVERYONE)
+ - text width is now calculated correctly when text contains TAB chars
+   (fixed by Dimitrios P. Bouras <dimitri@ee.ubc.ca>)
+ - fixed geometry bug reported by Al Womelsdorf <al@planet8.sp.paramax.com>
+ - included Xmu/Converters.h in window.c, which may allow OpenWindows
+   users to build (fixed by Huzefa Mustaly <c23hm@kocrsv01.delcoelect.com>)
+ - added [Background] button (suggested by Marty Leisner
+   <leisner@sdsp.mc.xerox.com>)
+ - fixed Help window geometry problem (pointed out by Gordon Berkley
+   <gordonb@mcil.comm.mot.com> and others)
+ - complain about 'printCmd' usage; honor 'printCommand' (pointed out by
+   Tim Medley <tlm@frb.gov>)
+
+Changes for version 1.6.1:
+ - pressing [Help] button caused xless to dump core (reported by several
+   people, fixed by Martin Boyer <gamin@ireq-robot.hydro.qc.ca>)
+ - cleaned up "Features" list in help message & README
+
+Changes for version 1.6:
+ - fixed copyright notices for R6 contrib tape
+ - cleaned up code, help message & README
+ - added 'defaultSearchType' resource (suggested by Dale W. King
+   <c23dwk@kocrsv01.delcoelect.com>)
+ - added code to let xless continually monitor input file, like 'tail -f'
+ - added 'monitorFile' resource and '-f' option to enable file monitoring code
+
+Changes for version 1.5:
+
+ - changed '-textGeometry' to the standard '-geometry' and handled X and Y
+   positioning correctly (reported by Steven Fought <xibalba@cco.caltech.edu>
+   and Volker Zink <zink@inf-wiss.ivp.uni-konstanz.de>)
+ - renamed #define'd to avoid conflicts with POSIX or other system constants
+   (reported by Bob Friesenhahn <bob@simple.sat.tx.us> and others)
+ - fixed font width calculation (reported by Giuseppe Carnevale
+   <gcare@afsmail.cern.ch> and Vladimir V. Egorin <egorin@math.uic.edu>)
+ - added 'editor' resource, now check VISUAL envvar before EDITOR (suggested
+   by Joerg Hoehle <hoehle@inf-wiss.uni-konstanz.de>)
+ - added case-insensitive searching contributed by Dale W. King
+   <c23dwk@kocrsv01.delcoelect.com>
+ - now use nicer fonts
+ - overrode ctrl-S and ctrl-R so second search box doesn't confuse people
+ 
+Changes for version 1.4:
+
+ - added 'maxWindows' resource to limit damage done by 'xless *' (suggested
+   by Markus Koch <raistlin@uni-paderborn.de>)
+ - cleaned up help window (suggested by Len Makin <len@mel.dit.csiro.au>)
+ - cleaned up manual page
+ - massive source code reformatting
+ - all buffers should be dynamically allocated now
+ - tried to eliminate as much code duplication as practical
+ - tilde expansion performed on file names (suggested by Michael J. Thibodeau
+   <mike@ra.cs.umb.edu>)
+ - icon & title name are now set to 'xless:filename'
+ - title line is gone because titlebar name should now be correct
+ - '?' is an accelerator for the [Help] button, 'Q' is an accelerator for the
+   [Close window] button and 'Meta-Q' is an accelerator for the [Quit] button
+   (if present)
+ - you are now prompted if you try to [Quit] and there is more than one window
+ - popup boxes are now created when they're needed and (most of them)
+   are only created once
+ - all windows are now created equal; there's no main window anymore
+ - added 'quitButton' resource for those who would like something like the
+   old behavior
+ - [Editor] and [Reload] buttons are now re-sensitized if user starts with
+   a file from STDIN, then changes to another file
+ - Add 'textGeometry' resource (suggested by Tom Bannon
+   <bannon@eyebeam.csc.ti.com>)
+ - Set window manager size hints
+ - Change default textFont to Courier 12; variable-width fonts screw up
+   geometry guess
+ - Add 'namePrefix' resource which adds 'xless:' (or whatever) to the
+   front of all icon names and window titles
+ - Add 'removePath' resource which, if true, truncates the path name to
+   just the last element so names are somewhat more readable
+ - Add 'sizeToFit' resource which, if true, make the window only as large
+   as it needs to be (handy for lists or short files)
+ - The button colors were quieted down a bit
+
+Changes for version 1.3:
+
+ - icon name now changed when file is changed
+ - added code for "help" action from Fred Gilham <gilham@csl.sri.com>
+ - merged in interface cleanups from Fred Gilham
+ - added code to filter out ^H_ left by 'man' underlining (from Fred Gilham,
+   but simplified by me, so bugs are probably my fault)
+
+Changes for version 1.2:
+
+ - fixed R4 scrolling problem reported by Karsten Gaier
+   <gaier@nova.tat.physik.uni-tuebingen.de>
+ - added resource file files from Rainer Klute
+   <klute@irb.informatik.uni-dortmund.de>
+ - added print button code from Andrew Bacon <andy@mcsds3.mcs.loral.com>
+   (but I hacked on it, so any bugs are undoubtedly mine)
+ - ANSIfied some stuff
+
+Changes for version 1.1:
+
+ - fixed things to work under R5
+ - added 'editorDoesWindows' which can be set if your editor is X-savvy
+   enough to come up in its own window
+ - added a 'quit()' action
+ - created XLess.ad, which incorporates the previous .Xresources with
+   a bunch of keyboard bindings to make xless behave more like less

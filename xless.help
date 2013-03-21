@@ -1,0 +1,84 @@
+This is XLess version 1.7, a file browsing tool for the X Window System
+
+CREDITS:
+   By Dave Glowacki - UCB Software Warehouse	<dglo@CS.Berkeley.EDU>
+   Originally By Carlo Lisa - MIT Project Athena.
+   Based Upon Xmore for X11R2 by Chris Peterson - MIT Project Athena.
+
+   The regular expression library in the 'regexp' subdirectory was written
+   by Henry Spencer and is Copyright (c) 1986 by University of Toronto
+
+LEGAL STUFF:
+   Copyright (C) 1994 by Dave Glowacki
+  
+   Permission is hereby granted, free of charge, to any person obtaining a
+   copy of this software and associated documentation files (the "Software"),
+   to deal in the Software without restriction, including without limitation
+   to rights to use, copy, modify, merge, publish, distribute, sublicense,
+   and/or sell copies of the Software, and to permit persons to whom the
+   Software is furnished to do so, subject to the following conditions:
+  
+   The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
+  
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+   DAVE GLOWACKI BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+   IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+   CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+FEATURES:
+   Display either the file(s) specified on the command line or input from
+      standard input, supplied by a pipe.  File/pipe may be optionally
+      monitored so that the display is continuously updated as new text is
+      added.
+   Display new files in the current window or by creating a new window.
+   Reload or print the displayed file.
+   Search the displayed file using either exact, case-insensitive, or
+      regular expression patterns.
+   Edit the displayed file with your favorite editor (as specified in
+      the VISUAL or EDITOR environment variable)
+
+SUMMARY OF ACTIONS:
+
+In Text:
+
+Ctrl<Key>v	OR	
+    <Key>SPACE	OR	
+    <Key>f		Scroll forward one full window
+Meta<Key>v	OR
+Ctrl<Key>b	OR
+    <Key>b		Scroll back one full window
+    <Key>k	OR
+    <Key>y		Scroll down one line
+    <Key>RETURN	OR
+    <Key>j	OR
+    <Key>e		Scroll up one line
+
+Meta<Key>s		Bring up Search dialog box (like pressing Search
+			button)
+Meta<Key>n		Search for next occurence of pattern (like pressing
+				Search Next button)
+Meta<Key>r		Reload current file (like pressing Reload button)
+Meta<Key>e		Edit current file (like pressing Editor button)
+Meta<Key>c		Change to a different file (like pressing Change File
+				button)
+Meta<Key>w		Open a file in a new window (like pressing New Window
+				button)
+Meta<Key>p		Print current file (like pressing Print button)
+    <Key>?		Read this help message (like pressing Help button)
+Meta<Key>q		Close all windows
+
+CLICK LEFT:		Position cursor.
+CLICK RIGHT:		Copy text, from cursor position to actual
+			mouse position, into Cut & Paste buffer.
+
+
+In scrollbars:
+
+CLICK LEFT:		Move Down - more of pointer is near bottom
+				    of window.
+CLICK MIDDLE:		Move top of page to current mouse position.
+CLICK RIGHT:		Move Up - more of pointer is near bottom
+				  of window.

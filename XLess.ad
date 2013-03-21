@@ -1,0 +1,32 @@
+!$Header: /usr/sww/share/src/X11R6/local/applications/xless-1.5/RCS/XLess.ad,v 1.8 1994/06/01 00:46:29 dglo Exp $
+
+*standardFont:	fixed
+*textFont:		-misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-1
+*labelFont:	-adobe-times-medium-r-normal--12-120-75-75-p-*-iso8859-1
+*buttonFont:	-adobe-new century schoolbook-medium-r-normal--12-120-75-75-p-*-iso8859-1
+*standardCur:	left_ptr
+*dialogCur:	center_ptr
+
+.Paned.Text.Translations: #override\n\
+	Ctrl<Key>S:	no-op(RingBell)\n\
+	Ctrl<Key>R:	no-op(RingBell)\n\
+	<Key>space:	next-page()\n\
+	<Key>F:		next-page()\n\
+	Ctrl<Key>B:	previous-page()\n\
+	<Key>B:		previous-page()\n\
+	<Key>K:		scroll-one-line-down()\n\
+	<Key>Y:		scroll-one-line-down()\n\
+	<Key>Return:	scroll-one-line-up()\n\
+	<Key>J:		scroll-one-line-up()\n\
+	<Key>E:		scroll-one-line-up()\n\
+	<Key>q:		quit()\n
+.Paned.Text.baseTranslations: #override\n\
+	<Key>space:	next-page()\n\
+	<Key>F:		next-page()\n\
+	Ctrl<Key>B:	previous-page()\n\
+	<Key>K:		scroll-one-line-down()\n\
+	<Key>Y:		scroll-one-line-down()\n\
+	<Key>Return:	scroll-one-line-up()\n\
+	<Key>J:		scroll-one-line-up()\n\
+	<Key>E:		scroll-one-line-up()\n\
+	<Key>q:		quit()\n

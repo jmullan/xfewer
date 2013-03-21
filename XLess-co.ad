@@ -1,0 +1,10 @@
+#include "XLess"
+
+*Background:		ivory
+
+*Command.background:	cornsilk
+
+*confirm.background:	sea green
+
+*Cancel.background:	orange red
+*Ok !.background:		spring green

@@ -1,0 +1,13 @@
+As of 1.7-10, the following changes have been made to the Debian version of
+xless:
+
+* We no longer use the IMakefile based Makefile, mostly just because it's
+  really complex and I don't want to deal with it
+* We no longer use the included regexp library, but instead rely on the 
+  regexp functions built into glibc. This makes it easier to maintain.
+* The only search type that is recognized now is regular expression search.
+  The ExactMatch and CaseInsesitiveMatch in the original xless is not
+  currently supported. If any of you really wants this back, please email
+  me.
+  
+Randolph Chung <tausq@debian.org> Apr 11 1999
